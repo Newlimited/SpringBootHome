@@ -1,4 +1,4 @@
-package com.home_project.firstproject;
+package com.yuhan.first_project;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
