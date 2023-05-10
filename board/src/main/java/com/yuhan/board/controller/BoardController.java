@@ -76,7 +76,6 @@ public class BoardController {
         ResponseEntity<ResponseDto> response = boardService.deleteBoard(userEmail, boardNumber);
         return response;
             // 삭제는 바디에 받을 수 없다.
-            //samplejob
             
     }
 }
