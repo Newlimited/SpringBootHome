@@ -8,9 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "Example")
@@ -19,8 +21,8 @@ public class ExampleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     // 열거형 IDENTITY를 지정해줌. => AUTO INCREMENT
-    @Column(name = "example_column1", nullable = false, unique = true)
+    @Column(name = "exampleColumn1", nullable = false, unique = true)
     private int pk;
-    private String example_column2 ;
-    private boolean example_column3;
+    private String exampleColumn2;
+    private boolean exampleColumn3;
 }

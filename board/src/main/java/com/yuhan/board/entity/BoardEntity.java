@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.yuhan.board.dto.request.Board.PostBoardRequestDto;
+import com.yuhan.board.dto.request.Board2.PostBoardRequestDto2;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,28 +29,39 @@ public class BoardEntity {
     @Id //boardNumber가 pk 그리고 AutoIncrease가 있기에 GeneratedValue생성
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int boardNumber;
-    private String boardWriterEmail;
-    private String boardTitle;
-    private String boardContent;
+    private String writerEmail;
+    private String title;
+    private String content;
     private String boardImageUrl;
     private String writeDatetime;
     private int viewCount;
 
-
-
-    public BoardEntity(PostBoardRequestDto dto){
+    public BoardEntity(PostBoardRequestDto dto) {
         Date now = new Date();
         SimpleDateFormat simpleDateFormat = 
-        new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String writeDatetime = simpleDateFormat.format(now);
-        
-        //boardNumber는 넣지 않을것이다 왜냐면 GeneratedValue를 걸어줘서 
-        this.boardWriterEmail = dto.getBoardWirterEmail();
-        this.boardTitle= dto.getBoardTitle();
-        this.boardContent =dto.getBoardContent();
+          //boardNumber는 넣지 않을것이다 왜냐면 GeneratedValue를 걸어줘서
+        this.writerEmail = dto.getBoardWriterEmail();
+        this.title = dto.getBoardTitle();
+        this.content = dto.getBoardContent();
         this.boardImageUrl = dto.getBoardImageUrl();
         this.writeDatetime = writeDatetime;
         this.viewCount = 0;
-    
     }
+
+    public BoardEntity(String userEmail, PostBoardRequestDto2 dto) {
+        Date now = new Date();
+        SimpleDateFormat simpleDateFormat = 
+            new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String writeDatetime = simpleDateFormat.format(now);
+
+        this.writerEmail = userEmail;
+        this.title = dto.getBoardTitle();
+        this.content = dto.getBoardContent();
+        this.boardImageUrl = dto.getBoardImageUrl();
+        this.writeDatetime = writeDatetime;
+        this.viewCount = 0;
+    }
+
 }

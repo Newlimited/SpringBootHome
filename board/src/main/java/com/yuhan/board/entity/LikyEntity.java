@@ -1,5 +1,7 @@
 package com.yuhan.board.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -22,4 +24,7 @@ public class LikyEntity {
     private int boardNumber;     
     @Id
     private String userEmail;
+    private String userNickname;
+    private String userProfileImageUrl;
+  
 }

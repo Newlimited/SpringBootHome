@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yuhan.board.dto.request.Board.PatchBoardRequestDto;
 import com.yuhan.board.dto.request.Board.PostBoardRequestDto;
 import com.yuhan.board.dto.response.ResponseDto;
-import com.yuhan.board.service.BoardService;
-import com.yuhan.board.dto.response.board.GetBoardResponseDto;
 import com.yuhan.board.dto.response.board.GetBoardListResponseDto;
+import com.yuhan.board.dto.response.board.GetBoardResponseDto;
+import com.yuhan.board.service.BoardService;
 @RestController
 @RequestMapping("/api/v1/board")
 public class BoardController {
@@ -48,7 +48,7 @@ public class BoardController {
 
     // 3. 게시물 목록 조회
     @GetMapping("/list")
-    public ResponseEntity<? super GetBoardListResponseDto> getBoar() {
+    public ResponseEntity<? super GetBoardListResponseDto> getBoard() {
         ResponseEntity<? super GetBoardListResponseDto> response = boardService.getBoardList();
         return response;
     }
@@ -75,6 +75,7 @@ public class BoardController {
         ){
         ResponseEntity<ResponseDto> response = boardService.deleteBoard(userEmail, boardNumber);
         return response;
-
+            // 삭제는 바디에 받을 수 없다.
+            
     }
 }
